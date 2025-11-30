@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>User Hub</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/tableStyle.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
+            <div >
+                <!--                    class="sidebar-brand-icon rotate-n-15"-->
+                <!--                    <i class="fas fa-laugh-wink"></i>-->
+                <img src="assets/valheim-logo.png" alt="Valheim Logo" width="40" height="40">
+
+            </div>
+
+            <div class="sidebar-brand-text mx-3">User Hub</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="/main">-->
+<!--                <span>Main</span></a>-->
+<!--        </li>-->
+
+        <li class="nav-item">
+            <a class="nav-link" href="/billing">
+                <span>Billing</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/my-servers">
+                <span>My Servers</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/create-server">
+                <span>Create a new server</span></a>
+        </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link" href="/referral-check">
+                <span>Referral Check</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/manage-subs">
+                <span>Manage Subscriptions</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/faq">
+                <span>FAQ</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">
+                <span>Logout</span></a>
+        </li>
+
+        <!-- Sidebar Toggler (Sidebar) -->
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mt-3 mb-4 text-gray-800">Frequently Asked Questions</h1>
+
+                <h3>How do I upload my world to the Valheim server?</h3>
+                <p>1. Start your game and join your server once (this will create your save folders)</p>
+                <p>2. Locate the savegame files on your computer, usually stored at: C:\Users\username\AppData\LocalLow\IronGate\Valheim</p>
+                <p>3. Grab the .db and .fwl file, then connect to your server using ftp with the credentials presented in your control panel (we recommend using Filezilla).</p>
+                <p>4. Upload both files into this folder: /ftp/savedirectory/unity3d/IronGate/Valheim/worlds</p>
+                <p>5. Go to the 2nd tab of the control panel and change the world name to the name of the files you just uploaded (if the file name is "example.db" you should type "example" into the world name box without the quotations).</p>
+                <p>6. Click on save and restart server</p>
+                <br>
+                <h3>How do I make myself or others the admin(s) of my server? </h3>
+                <p>Pressing f2 while in-game should display your username and steam64ID at the bottom. Copy and paste that number into adminlist.txt located at /ftp/savedirectory/unity3d/IronGate/Valheim/</p>
+                <p>If you can't find your steam64ID in-game you can get it with the following method:</p>
+                <p>1. Click on your username at the top right, then click on "view my profile". You should see a URL bar that displays: https://steamcommunity.com/profiles/[Long Number]/.
+                    Copy and paste that number into adminlist.txt located at /ftp/savedirectory/unity3d/IronGate/Valheim/. If you don't see a URL bar, go to step 2.</p>
+                <p>2. In your Steam client click on "View", then click on "Settings", then click on "Interface" on the left side.</p>
+                <p>3. On the Interface page find  "Display Steam URL address bar when available", then click on the box next to it. Click on "Ok" to save the settings. Now you can go back to step 1.</p>
+                <br>
+                <h3>What are the admin commands?</h3>
+                <table border=1 id="customers">
+                    <tr>
+                        <td>Command</td>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                        <td>kick [name/ip/userID]</td>
+                        <td>Kick the user</td>
+                    </tr>
+                    <tr>
+                        <td>ban [name/ip/userID]</td>
+                        <td>Ban the user</td>
+                    </tr>
+                    <tr>
+                        <td>unban [ip/userID]</td>
+                        <td>Unban the user</td>
+                    </tr>
+                    <tr>
+                        <td>banned</td>
+                        <td>Shows a list of banned users</td>
+                    </tr>
+                    <tr>
+                        <td>ping</td>
+                        <td>Send a ping to the server to get your latency</td>
+                    </tr>
+                    <tr>
+                        <td>lodbias [number]</td>
+                        <td>Set distance lod bias. If empty shows actual lodbias. By default 1.5</td>
+                    </tr>
+                    <tr>
+                        <td>help</td>
+                        <td>Lists all the commands you can use</td>
+                    </tr>
+                    <tr>
+                        <td>info</td>
+                        <td>Print system info</td>
+                    </tr>
+                    <tr>
+                        <td>save</td>
+                        <td>Issues a world save</td>
+                    </tr>
+
+                </table>
+                <br>
+                <h3>Information regarding Backups</h3>
+                <p>Due to storage concerns, your backup will be automatically deleted 2 hours after you generate the file. After you click "Backup Server"
+                    please wait 10 minutes for the file to be fully generated before you download the file. You can access your backup with FileZilla at this path: /ftp/backup </p>
+                <br>
+                <h3>What if my question is not listed on this page?</h3>
+                <p>Send an email to admin@valheimdedicatedhosting.com and we will answer as soon as possible.</p>
+
+
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; www.valheimdedicatedhosting.com</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="login-page.ejs">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+
+
+</body>
+
+</html>

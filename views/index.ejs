@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="With our custom built control panel for valheim, you will experience less server outages and a more accessible host than a third party provider." />
+        <meta name="author" content="" />
+        <meta name="google-site-verification" content="PV1IORiGuxFdt8nu-0YDqYW-trWbW1cYZvxL44gKs50" />
+        <title>Reliable Valheim Server Hosting! Easy in, easy out</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/css/styles.css" rel="stylesheet" />
+
+         <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216569994-1">
+        </script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-216569994-1');
+        </script>
+
+    </head>
+    <style>
+        input[type=submit] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger">Valheim Dedicated Hosting</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login-page">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-white font-weight-bold">Reliable hosting for your Valheim server in a few clicks!</h1>
+                        <hr class="divider my-4" />
+                    </div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <p class="text-white-75 font-weight-light mb-5">3 days to refund if you change your mind! Cancel your subscription instantly whenever you want.</p>
+
+                        <% if (cameFromRef) {%>
+                            <p><b><i>Valid referral link detected, you will receive a discount of 20% if you sign up right now!</i></b></p>
+                        <% } %>
+
+                        <form id="registration" action="signup" method="post">
+                            <input id="mainemail" class="form-control" required type="email" name="email" placeholder="Your email"/>
+                            <br>
+                            <input class="form-control" required type="password" name="password" placeholder="Enter a password"/>
+                            <br>
+                            <a class="nav-link" href="/tos"><span>Terms of Service</span></a>
+                            <br>
+                            <input type="hidden" name="refTransport" value='<%= refCarrier %>' />
+                            <input id="mainButton" type="submit" value="Sign up"/>
+                            <br>
+<!--                            <script src="https://js.stripe.com/v3/"></script>-->
+<!--                            <button class="btn btn-primary btn-xl" onclick="gotoCheckout()">Subscribe for $10/month!</button>-->
+<!--                            <script>-->
+<!--                                var stripe = Stripe('pk_test_51I9xfFApb214pLqIj6HdzgNPdsEhVFuj2s6ETrUFjwjgbrQq7JcmuypT51yH3u3IaAjVPI4ybdU1AOQir8wHy5cM00Phht4epo');-->
+
+<!--                                function gotoCheckout() {-->
+<!--                                    stripe.redirectToCheckout({-->
+<!--                                        // Make the id field from the Checkout Session creation API response-->
+<!--                                        // available to this file, so you can provide it as argument here-->
+<!--                                        // instead of the {{CHECKOUT_SESSION_ID}} placeholder.-->
+<!--                                        sessionId: -->
+<!--                                    }).then(function (result) {-->
+<!--                                        // If `redirectToCheckout` fails due to a browser or network-->
+<!--                                        // error, display the localized error message to your customer-->
+<!--                                        // using `result.error.message`.-->
+<!--                                    });-->
+<!--                                }-->
+<!--                            </script>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Services-->
+        <section class="page-section" id="services">
+            <div class="container">
+                <h2 class="text-center mt-0">We offer the best perks for your server!</h2>
+                <hr class="divider my-4" />
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="fas fa-3x fa-money-bill-wave text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">3 days to refund</h3>
+                            <p class="text-muted mb-0">Money back guaranteed if you are not satisfied.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="fas fa-3x fa-stopwatch text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Fast Setup</h3>
+                            <p class="text-muted mb-0">Your server will be ready minutes after you register.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="far fa-3x fa-handshake text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Referral Program</h3>
+                            <p class="text-muted mb-0">You can reduce the cost of your subscription for the upcoming months! (scroll down for more details)</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <i class="fas fa-3x fa-toolbox text-primary mb-4"></i>
+                            <h3 class="h4 mb-2">Easy Configuration</h3>
+                            <p class="text-muted mb-0">We built a custom control panel for Valheim instead of using TCAdmin, which means you won't have to experience problems from a third party provider(extra logins, communication errors, random server outages, etc).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact-->
+        <section class="page-section" id="contact">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="mt-0">Don't like the base subscription fee of $14? You can reduce it for the upcoming months! </h2>
+                        <hr class="divider my-4" />
+                        <p class="text-muted mb-5">With our referral program you can reduce the price of your subscription for the next month by half! You can do this once per month, meaning you could potentially halve your subscription fee forever! The referral link and more details will be given after you sign up.</p>
+                        <hr class="divider my-4" />
+                        <p lass="text-muted mb-5">Any questions can be sent to: <b>admin@valheimdedicatedhosting.com</b></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Valheim Dedicated Hosting</div></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+    </body>
+</html>

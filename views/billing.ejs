@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Billing Page</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/tableStyle.css" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div >
+                    <!--                    class="sidebar-brand-icon rotate-n-15"-->
+                    <!--                    <i class="fas fa-laugh-wink"></i>-->
+                    <img src="assets/valheim-logo.png" alt="Valheim Logo" width="40" height="40">
+
+                </div>
+                <div class="sidebar-brand-text mx-3">User Hub</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/main">-->
+<!--                    <span>Main</span></a>-->
+<!--            </li>-->
+
+            <li class="nav-item">
+                <a class="nav-link" href="/billing">
+                    <span>Billing</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/my-servers">
+                    <span>My Servers</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/create-server">
+                    <span>Create a new server</span></a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="/referral-check">
+                    <span>Referral Check</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/manage-subs">
+                    <span>Manage Subscriptions</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/faq">
+                    <span>FAQ</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <span>Logout</span></a>
+            </li>
+
+            <!-- Sidebar Toggler (Sidebar) -->
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mt-3 mb-4 text-gray-800">Billing</h1>
+                    <script src="https://js.stripe.com/v3/"></script>
+                    <script src="/socket.io/socket.io.js"></script>
+                    <% if (serverCount > 0 || subActive === true) { %>
+                        <script>
+                            var socket = io();
+
+                            function timeCheck() {
+
+                                socket.emit("dateCheck", {time: '<%= monthPassed %>', email: '<%= userEmail %>', oneMonth: '<%= day31 %>', expired: '<%= refExpired %>'} )
+                                setTimeout(timeCheck, 10000);
+                              
+                            }
+
+                            setTimeout(timeCheck, 100);
+
+                          
+                            //const startSocket2 = function() {
+
+                            //    setInterval( function() {
+                            //        socket.emit("dateCheck", {time: '<%= monthPassed %>', email: '<%= userEmail %>', oneMonth: '<%= day31 %>', expired: '<%= refExpired %>'} )
+                            //    }, 60000);
+                            //}
+                            //startSocket2();
+
+
+                        </script>
+                        <p>Thanks for subbing!</p>
+                        <% if (refExpired) {%>
+                            <p>Your referral link has expired for this month because someone has successfully subscribed with it. A new link will be provided next month.</p>
+                        <% } else { %>
+                            <p>Your referral link is: https://valheimdedicatedhosting.com/invite/<%= refLink %></p>
+                        <% } %>
+                        <p>You can send the above referral link to anyone for a 50% discount on your next invoice, provided that the recipient keeps their
+                        subscription after their 3 day trial (the recipient also gets a 20% discount for their first month of subscription). The discount can only be
+                        applied to the first server you purchased with this account.</p>
+                        <p>Time until trial expires: </p>
+                        <p id="clock" style="font-size:50px"></p>
+
+                        <script>
+                            // Set the date we're counting down to
+                            var countDownDate = new Date('<%= trialEnd %>').getTime();
+
+                            // Update the count down every 1 second
+                            var x = function() {
+
+                                // Get today's date and time
+                                var now = new Date().getTime();
+
+                                // Find the distance between now and the count down date
+                                var distance = countDownDate - now;
+
+                                // Time calculations for days, hours, minutes and seconds
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                // Display the result in the element with id="demo"
+                                document.getElementById("clock").innerHTML = days + "d " + hours + "h "
+                                    + minutes + "m " + seconds + "s ";
+
+                                // If the count down is finished, write some text
+                                if (distance < 0) {
+                                    clearInterval(x);
+                                    document.getElementById("clock").innerHTML = "EXPIRED";
+                                }
+                            };
+                            x();
+                            setInterval(x, 1000);
+                        </script>
+
+
+                    <% } else {%>
+                        <table border="1" id="customers">
+                            <tr>
+                                <td>Subscription Item</td>
+                                <td>Price</td>
+                                <td>Free trial period</td>
+                                <td>Create Server</td>
+                            </tr>
+                            <tr>
+                                <td>Valheim server</td>
+                                <td><%= priceOfSub %></td>
+                                <td>3 days</td>
+                                <td><button class="btn btn-green" onclick="gotoCheckout()">Start my trial</button></td>
+                            </tr>
+                        </table>
+
+                        <p><i>Note: if you cancel your subscription before the trial ends, a full refund will be granted. (You can do so within "Manage Subscriptions" on your left)</i></p>
+
+                    <% } %>
+                    <script>
+                         // const Stripe = require("stripe");
+                        var stripe = Stripe('<%= publicKey %>');
+
+                        function gotoCheckout() {
+                            stripe.redirectToCheckout({
+                                // Make the id field from the Checkout Session creation API response
+                                // available to this file, so you can provide it as argument here
+                                // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+                                sessionId: '<%= sessionId %>'
+                            }).then(function (result) {
+                                // If `redirectToCheckout` fails due to a browser or network
+                                // error, display the localized error message to your customer
+                                // using `result.error.message`.
+                            });
+                        }
+                    </script>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; www.valheimdedicatedhosting.com</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login-page.ejs">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

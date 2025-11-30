@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Reset</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/alert-messages.css" rel="stylesheet" />
+    <link href="/css/animation.css" rel="stylesheet">
+
+
+</head>
+
+<body class="animation-area">
+
+    <div class="container" style="position: relative; z-index: 1000">
+
+        <!-- Outer Row -->
+        <div class="row col-lg-6 m-auto justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!--                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>-->
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Password Reset</h1>
+                                    </div>
+                                    <form id="resetForm" action="" method="post">
+                                        <div class="form-group">
+                                            <input type="password" name="password" class="form-control form-control-user"
+                                                   id="inputPassword" onkeyup="check()" placeholder="New Password...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="confirm" class="form-control form-control-user"
+                                                   id="confirmPassword" onkeyup="check()" placeholder="Confirm New Password...">
+                                        </div>
+                                        <div class="form-group">
+                                            <span id="message"></span>
+                                            <button id="resetButton" class="btn btn-primary btn-user btn-block" type="submit">Update Password</button>
+                                        </div>
+
+                                    </form>
+                                    <script>
+                                        var check = function() {
+                                            if (document.getElementById('inputPassword').value ==
+                                                document.getElementById('confirmPassword').value) {
+                                                document.getElementById('message').style.color = 'green';
+                                                document.getElementById('message').innerHTML = 'Passwords match';
+                                                document.getElementById('resetButton').disabled = false;
+                                            } else {
+                                                document.getElementById('message').style.color = 'red';
+                                                document.getElementById('message').innerHTML = 'Passwords do not match';
+                                                document.getElementById('resetButton').disabled = true;
+                                            }
+                                        }
+
+                                    </script>
+                                    <% if(locals.successFlashMessage){ %>
+                                    <div class="alert alert-success">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        <%=successFlashMessage%>
+                                    </div>
+                                    <% } %>
+
+                                    <% if(locals.errorFlashMessage){ %>
+                                    <div class="alert alert-error">
+                                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                        <%=errorFlashMessage%>
+                                    </div>
+                                    <% } %>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="/login-page">Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <ul class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<exten></exten>-->
+
+<!--<form action="" method="POST">-->
+<!--    <legend>Reset Password</legend>-->
+<!--    <div class="form-group">-->
+<!--        <label for="password">New Password</label>-->
+<!--        <input class="form-control" type="password" name="password" value="" placeholder="New password" autofocus="autofocus" />-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="confirm">Confirm Password</label>-->
+<!--        <input class="form-control" type="password" name="confirm" value="" placeholder="Confirm password" />-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <button class="btn btn-primary" type="submit">Update Password</button>-->
+<!--    </div>-->
+<!--</form>-->
+<!--</html>-->
+
+
